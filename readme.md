@@ -12,3 +12,9 @@ User should be able to --
 Menu -- all, by categories, and search box
 Main content -- responsive design, card or tile layout
 Infinit scroll + scroll to top button
+
+https://newsapi.org/docs/endpoints/everything
+
+
+ref
+https://github.com/joeltrew/BBCNews-React-Native
