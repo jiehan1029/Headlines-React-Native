@@ -7,7 +7,7 @@ export default class TopicScreen extends Component {
 
     return (
     	<View>
-      <Text>This is a topic screen page</Text>
+      <Text>This is a topic screen page to show {this.props.navigation.state.params.field}</Text>
       </View>
     );
   }

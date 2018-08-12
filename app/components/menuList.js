@@ -1,13 +1,11 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types'; 
-import {NavigationActions} from 'react-navigation';
+import {NavigationActions, DrawerActions} from 'react-navigation';
 import {ScrollView, Text, View, Alert} from 'react-native';
 
 import styles from '../styles/menuList.style';
 
-const TopicList=['home','business','entertainment','general',
-'health','science','sports','technology'];
-
+const TopicList=['home','business','entertainment','general','health','science','sports','technology'];
 
 class MenuList extends Component {
   // create a method that would pass different props (topic) to
@@ -15,12 +13,10 @@ class MenuList extends Component {
   // search via API). 
   constructor(props){
     super(props);
-    //this.navigateToShow=this.navigateToShow.bind(this);
   }
 
   navigateToShow = (topic)  => () => {
     /*
-console.log('this is console log',topic);
 Alert.alert(
   'Alert Title',
   `${topic.topic}`,
@@ -34,11 +30,12 @@ Alert.alert(
     let route="";
     if(topic.topic==="home"){route="Home"}else{route="Topic"}
     const navigateAction = NavigationActions.navigate({
-      routeName:route
+      routeName:route,
+      params:{field:topic.topic}
     });
     this.props.navigation.dispatch(navigateAction);
+    this.props.navigation.dispatch(DrawerActions.closeDrawer());
   }
-
 
   componentWillMount(){
     navItems=TopicList.map((topic,index)=>(
@@ -50,7 +47,6 @@ Alert.alert(
       navItems
     });
   }
-
 
   render() {
     return (

@@ -1,5 +1,3 @@
-// this is the router module
-
 import React, {Component} from 'react';
 import {Platform, Text, View, StyleSheet, TouchableOpacity} from 'react-native';
 import {StackNavigator} from 'react-navigation';
@@ -24,7 +22,7 @@ const TopicRoutes=StackNavigator({
 	Topic:{
 		screen:TopicScreen,
 		navigationOptions:({navigation})=>({
-			title:"Topic",
+			title:navigation.state.params.field,
 			headerLeft:(
 				// note that in latest react navigation, navigate("DrawerOpen") doesn't work
 				<TouchableOpacity onPress={()=>navigation.openDrawer()}>
