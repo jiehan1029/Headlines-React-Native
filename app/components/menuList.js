@@ -16,16 +16,6 @@ class MenuList extends Component {
   }
 
   navigateToShow = (topic)  => () => {
-    /*
-Alert.alert(
-  'Alert Title',
-  `${topic.topic}`,
-  [
-    {text: 'Ask me later', onPress: () => console.log('Ask me later pressed')}
-  ],
-  { cancelable: true }
-)    
-*/
     // see react navigation API ref for NavigationActions
     let route="";
     if(topic.topic==="home"){route="Home"}else{route="Topic"}

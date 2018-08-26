@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
 import {Text, View} from 'react-native';
 
-export default class TopicScreen extends Component {
+export class TopicScreen extends Component {
 
   render() {
-
     return (
     	<View>
       <Text>This is a topic screen page to show {this.props.navigation.state.params.field}</Text>
@@ -12,3 +12,5 @@ export default class TopicScreen extends Component {
     );
   }
 }
+
+export default connect()(TopicScreen);
