@@ -13,20 +13,18 @@ export class HomeScreen extends Component {
   }
 
   componentDidMount(){
-    console.log('componentDidMount');
     this.props.dispatch(fetchCategory('general'));
-    console.log('action dispatched');
   }
 
   componentWillReceiveProps(nextProps){
     this.setState({
-      newsData:nextProps.categoryData.data
+      newsData:nextProps.categoryData.data,
+      newsCategory:nextProps.categoryData.category
     });
   }
 
   render() {
-    console.log('test console.log')
-    console.log(this.state);
+    //console.log('render state=',this.state.newsCategory);
     return (
       <View>
       	<Text>This is a Home screen page</Text>
@@ -40,10 +38,5 @@ const mapStateToProps = (state)=>{
         categoryData: state.categoryData
     };
 }
-/*
-const mapDispatchToProps = {
-  fetchCategory
-}
-*/
 
 export default connect(mapStateToProps)(HomeScreen);

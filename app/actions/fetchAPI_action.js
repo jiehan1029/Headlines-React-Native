@@ -2,14 +2,17 @@ import {API_KEY} from '../../config';
 import {API_BASE_URL} from '../../config';
 import {normalizeResponseErrors} from './utils';
 
-export const FETCH_CATEGORY_SUCCESS = 'FETCH_GATEGORY_SUCCESS';
-export const fetchCategorySuccess = (data,category) => ({
-	type: FETCH_GATEGORY_SUCCESS,
-	categoryData: {
-		category:category,
-		data:data
-	}	
-});
+export const FETCH_CATEGORY_SUCCESS = 'FETCH_CATEGORY_SUCCESS';
+export const fetchCategorySuccess = (data,category) => {
+	let res={
+		type: FETCH_CATEGORY_SUCCESS,
+		categoryData: {
+			category:category,
+			data:data
+		}
+	}
+	return res;
+};
 
 export const FETCH_ERROR = 'FETCH_ERROR';
 export const fetchError = error => ({
@@ -18,17 +21,16 @@ export const fetchError = error => ({
 });
 
 export const fetchCategory = (category) => async (dispatch,getState) => {
-	console.log('in fetch category function');
+	//console.log('in fetch category function');
 	const endpoint = `${API_BASE_URL}?apiKey=${API_KEY}&category=${category}`;
-	console.log('endpont=',endpoint);
+	//console.log('endpont=',endpoint);
 	try {
-		console.log('in try block start')
 		let response = await fetch(endpoint);
-		console.log('in try block, after api call, response=',response);
 		let normalizedRes = await normalizeResponseErrors(response);
 		let responseJson = await normalizedRes.json();
 		let responseArticles = responseJson.articles;
 		let returnData = fetchCategorySuccess(responseArticles,category);
+		//console.log('in try block, after api call, response.articles=',returnData);
 		return dispatch(returnData);
 	} catch (error) {
 		dispatch(fetchError(error));
