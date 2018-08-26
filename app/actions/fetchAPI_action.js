@@ -17,13 +17,18 @@ export const fetchError = error => ({
 	error
 });
 
-export const fetchCategory = async (category) => async (dispatch,getState) => {
-	const endpoint = `${API_BASE_URL}?apiKey=${API_KEY}&country=us&category=${category}`;
+export const fetchCategory = (category) => async (dispatch,getState) => {
+	console.log('in fetch category function');
+	const endpoint = `${API_BASE_URL}?apiKey=${API_KEY}&category=${category}`;
+	console.log('endpont=',endpoint);
 	try {
+		console.log('in try block start')
 		let response = await fetch(endpoint);
+		console.log('in try block, after api call, response=',response);
 		let normalizedRes = await normalizeResponseErrors(response);
 		let responseJson = await normalizedRes.json();
-		let returnData = fetchCategorySuccess(responseJson,category);
+		let responseArticles = responseJson.articles;
+		let returnData = fetchCategorySuccess(responseArticles,category);
 		return dispatch(returnData);
 	} catch (error) {
 		dispatch(fetchError(error));

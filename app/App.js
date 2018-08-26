@@ -31,26 +31,3 @@ class App extends Component{
 	}
 }
 export default App;
-/*
-const Nav = DrawerNavigator({
-  Item1:{
-    screen:TopicRoutes,
-    }
-  },{
-    contentComponent:MenuList,
-    drawerWidth: Dimensions.get('window').width-120
-  }
-);
-
-export default class App extends Component{
-	render(){
-		return (
-			<Provider store={store}>
-				<View>
-					<Nav />
-				</View>
-			</Provider>
-		);
-	}
-}
-*/
