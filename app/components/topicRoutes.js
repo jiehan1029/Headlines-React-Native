@@ -5,6 +5,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 
 import TopicScreen from './topicScreen';
 import HomeScreen from './homeScreen';
+import SearchScreen from './searchScreen';
 
 const TopicRoutes=StackNavigator({
 	Home:{
@@ -29,6 +30,17 @@ const TopicRoutes=StackNavigator({
 					<Text>Menu</Text>
 				</TouchableOpacity>
 			)						
+		})
+	},
+	Search:{
+		screen:SearchScreen,
+		navigationOptions:({navigation})=>({
+			title:"Search Results",
+			headerLeft:(
+				<TouchableOpacity onPress={()=>navigation.openDrawer()}>
+					<Text>Menu</Text>
+				</TouchableOpacity>
+			)
 		})
 	}
 });

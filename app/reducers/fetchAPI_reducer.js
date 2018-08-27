@@ -1,4 +1,4 @@
-import {FETCH_CATEGORY_SUCCESS, FETCH_ERROR} from '../actions/fetchAPI_action';
+import {FETCH_CATEGORY_SUCCESS, FETCH_SEARCH_SUCCESS, FETCH_ERROR} from '../actions/fetchAPI_action';
 
 const initialState = {
 	error:null,
@@ -19,6 +19,12 @@ export default function reducer(state=initialState,action){
 		return Object.assign({},state,{
 			error:action.error
 		});
+	}
+	else if(action.type===FETCH_SEARCH_SUCCESS){
+		return Object.assign({},state,{
+			error:null,
+			searchData:action.searchData
+		})
 	}
 	return state;
 }
