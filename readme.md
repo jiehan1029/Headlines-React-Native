@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Headlines - a React Native News App
 The scope of the work is to build a client using React Native that delivers top news collected from News API. 
 Currently focus on Android app. 
@@ -12,11 +13,4 @@ User should be able to --
 Menu -- all, by categories, and search box
 Main content -- responsive design, card or tile layout
 Infinit scroll + scroll to top button
-
-https://newsapi.org/docs/endpoints/everything
-
-
-ref
-https://github.com/joeltrew/BBCNews-React-Native
-
 
