@@ -22,7 +22,7 @@ export const fetchError = error => ({
 
 export const fetchCategory = (category) => async (dispatch,getState) => {
 	//console.log('in fetch category function');
-	const endpoint = `${API_BASE_URL}?apiKey=${API_KEY}&category=${category}`;
+	const endpoint = `${API_BASE_URL}?apiKey=${API_KEY}&category=${category}&country=us`;
 	//console.log('endpont=',endpoint);
 	try {
 		let response = await fetch(endpoint);

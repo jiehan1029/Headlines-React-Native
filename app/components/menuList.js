@@ -5,7 +5,7 @@ import {ScrollView, Text, View, Alert} from 'react-native';
 
 import styles from '../styles/menuList.style';
 
-const TopicList=['home','business','entertainment','general','health','science','sports','technology'];
+const TopicList=['home','business','entertainment','health','science','sports','technology'];
 
 class MenuList extends Component {
   // create a method that would pass different props (topic) to
