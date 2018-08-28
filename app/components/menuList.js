@@ -1,11 +1,9 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
 import PropTypes from 'prop-types'; 
 import {NavigationActions, DrawerActions} from 'react-navigation';
-import {ScrollView, Text, View, Alert} from 'react-native';
-import {SearchBar, Button} from 'react-native-elements';
-
-import {connect} from 'react-redux';
-import { bindActionCreators } from 'redux';
+import {ScrollView, Text, View, StyleSheet} from 'react-native';
+import {SearchBar, Button, List, ListItem} from 'react-native-elements';
 
 import styles from '../styles/menuList.style';
 
@@ -62,11 +60,18 @@ class MenuList extends Component {
   }
 
   componentWillMount(){
-    navItems=TopicList.map((topic,index)=>(
-      <View key={index} style={styles.navItemStyle}>
-        <Text onPress={this.navigateToShow({topic})}>{topic}</Text>
-      </View>
-    ));    
+    navItems=(<List containerStyle={{marginBottom: 20}}>
+      {
+        TopicList.map((topic,index)=>(
+          <ListItem
+            key={index}
+            title={topic}
+            titleStyle={styles.navItemStyle}
+            onPress={this.navigateToShow({topic})}
+          />
+        ))
+      }
+    </List>); 
     this.setState({
       navItems
     });
@@ -77,22 +82,27 @@ class MenuList extends Component {
       <View style={styles.container}>
         <ScrollView>
           <View style={styles.sectionHeadingStyle}>
-            <Text>This is a header</Text>
+            <Text style={styles.sectionHeadingTextStyle}>US Top Headlines</Text>
             <SearchBar 
               lightTheme
+              containerStyle={{
+                borderWidth: 1,
+                borderBottomColor:'transparent',
+                borderTopColor:'transparent'
+              }}
               onChangeText={text=>this.handleChangeText(text)}
               onClearText={text=>this.setState({searchText:""})}
               placeholder='Type to search'
             />
             <Button 
+              activeOpacity={0.2}
+              buttonStyle={{padding:4,marginTop:10}}
               onPress={e=>this.handleSearch(e)}
-              title='search' />
+              title='search' 
+              textStyle={styles.buttonTextStyle} />
           </View>
           {this.state.navItems}
         </ScrollView>
-        <View style={styles.footerContainer}>
-          <Text>This is a fixed footer</Text>
-        </View>
       </View>
     );
   }

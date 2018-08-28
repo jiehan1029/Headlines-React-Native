@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {Text, View} from 'react-native';
+import {Text, ScrollView, Linking} from 'react-native';
 import {Card} from 'react-native-elements';
 
 import {fetchCategory} from '../actions/fetchAPI_action';
+import styles from '../styles/homeScreen.style';
 
 export class TopicScreen extends Component {
 	constructor(props){
@@ -28,17 +29,41 @@ export class TopicScreen extends Component {
     let NewsCards=(<Text>Loading...</Text>);
     if(this.state.newsData.length!==0){
       NewsCards=this.state.newsData.map((news,key)=>{
-        return (
-          <Card key={key}>
-            <Text>{news.title}</Text>
-          </Card>
-        )
+        if(news.urlToImage!==null){
+          let imgUrl=news.urlToImage;
+          return (
+            <Card 
+            key={key}
+            imageStyle={{ height:120 }}
+            image={{ uri:imgUrl }}
+            title={news.title}
+            >
+              <Text style={{textAlign:'left'}}>Published at: {news.publishedAt}</Text>
+              <Text style={styles.TextLinkStyle} onPress={ ()=> Linking.openURL(news.url) } >
+                more...
+              </Text>
+            </Card>
+          )
+        }
+        else{
+          return (
+            <Card 
+            key={key}
+            title={news.title}
+            >
+              <Text style={{textAlign:'left'}}>Published at: {news.publishedAt}</Text>
+              <Text style={styles.TextLinkStyle} onPress={ ()=> Linking.openURL(news.url) } >
+                more...
+              </Text>
+            </Card>
+          )          
+        }
       });
-    }  	
+    } 	
     return (
-      <View>
+      <ScrollView>
       	{NewsCards}
-      </View>
+      </ScrollView>
     );
   }
 }

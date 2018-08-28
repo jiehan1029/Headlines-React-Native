@@ -1,16 +1,15 @@
-<<<<<<< HEAD
 # Headlines - a React Native News App
-The scope of the work is to build a client using React Native that delivers top news collected from News API. 
-Currently focus on Android app. 
+This is a react-native client-side implementation of US news app. Users can navigate different categories as well as search for interested news.
 
-## User stories
-User should be able to --
-* view top headlines -- news title, relevant image, date, and will be navigated to news content upon click
-* navigate among different news categories
-* search for relevant news by keywords
+![drawer menu](drawerMenu.PNG)
 
-## Basic structure
-Menu -- all, by categories, and search box
-Main content -- responsive design, card or tile layout
-Infinit scroll + scroll to top button
+![screen](screen.PNG)
+
+To try the app on your local machine, please clone the repo, `npm install`, and then create an `.env` file under project root folder. Inside the `.env` file, add the following content:
+```
+API_KEY= YOUR_API_KEY_HERE
+API_BASE_URL='https://newsapi.org/v2/top-headlines'
+```
+Replace `YOUR_API_KEY_HERE` with your API key. This app calls [News API](https://newsapi.org/docs/get-started), which is available for free. Then you may run it on your device or emulator.
+
 
