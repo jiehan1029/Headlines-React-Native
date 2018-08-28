@@ -1,6 +1,8 @@
 # Headlines - a React Native News App
 This is a react-native client-side implementation of US news app. Users can navigate different categories as well as search for interested news.
 
+The app utilizes **React-Navigation** for navigation, and incorporated **Redux.js** for global store.
+
 ![drawer menu](drawerMenu.PNG)
 
 ![screen](screen.PNG)
